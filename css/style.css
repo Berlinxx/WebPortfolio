@@ -1,0 +1,391 @@
+body {
+  background-color: #1f2937;
+  color: #e5e7eb;
+  transition: background-color 0.3s, color 0.3s;
+  margin-left: 0; /* Removed fixed margin */
+  margin-right: 0; /* Removed fixed margin */
+}
+
+#navbar-hamburger {
+  width: 30px;
+  height: 30px;
+}
+
+/* Remove border and outline from the hamburger menu button */
+#hamburger {
+  border: none;         /* Remove the border */
+  outline: none;        /* Remove the outline */
+  background: transparent; /* Remove background, so only the SVG is visible */
+}
+
+#hamburger:focus {
+  outline: none;        /* Remove the outline on focus */
+}
+
+
+#navbar-hamburger path {
+  fill: rgb(255 76 96);
+  stroke: none !important;
+}
+
+
+svg {
+  stroke: none !important;
+}
+
+.light-mode #navbar-hamburger path {
+  fill: rgb(255 76 96);
+}
+
+@media (max-width: 767px) {
+  /* Adjustments for smaller screens */
+  .navbarcustom {
+    padding-top: 0.5rem; /* Reduce navbar padding */
+  }
+
+  .navbar-brand {
+    font-size: 1.5rem;
+  }
+
+  .name {
+    font-size: 24px; /* Adjust font size for smaller screens */
+  }
+
+  /* Reduce card size */
+  .card {
+    margin: 0.5rem;
+  }
+  
+  .viewall {
+    font-size: 0.9rem; /* Adjust the button font size */
+  }
+}
+
+@media (max-width: 991px) {
+  .card-title {
+    font-size: 1.25rem; /* Adjust title size on medium screens */
+  }
+}
+
+body.light-mode {
+    background-color: #f1f1f1;
+    color: #374151;
+}
+
+/* Light mode */
+body.light-mode footer .footera {
+  color: #374151 !important;
+  text-decoration: none; /* Remove underline */
+}
+
+.light-mode .footera {
+  color: #374151 !important;
+  text-decoration: none; /* Remove underline */
+}
+
+/* Dark mode */
+body footer .footera {
+  color: #e5e7eb;
+  text-decoration: none; /* Remove underline */
+}
+
+.project-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.navbarcustom{
+    background-color: transparent;
+    padding-top: 1rem;
+}
+
+/* Light mode text color */
+.navfont-light .nav-link {
+    color: #374151; /* Adjust as necessary */
+    transition: color 0.3s;
+}
+
+/* Dark mode text color */
+.navfont-dark .nav-link {
+    color: rgb(255 76 96) !important; /* Adjust as necessary */
+    transition: color 0.3s;
+}
+
+#modeToggle:focus,
+#modeToggle:active,
+#modeToggle:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+/* Default (dark mode) */
+.navfont {
+    color: #9a9ea5 !important;
+    transition: color 0.3s;
+}
+  
+  /* Light mode overrides */
+  body.light-mode .navfont {
+    color: #9a9ea5 !important;
+}
+  
+  .light-mode body {
+    background-color: #f3f4f6;
+    color: #374151;
+  }
+  
+  .light-mode .navbar {
+    background-color: transparent !important;
+  }
+  
+  .light-mode .navbar a {
+    color: #374151;
+  }
+  
+  #modeToggle {
+    transition: color 0.3s, background-color 0.3s;
+  }
+  
+
+  .light-mode .navbar .nav-link.active {
+    color: rgb(255 76 96) !important;
+    font-weight: bold;
+  }
+
+  .navbar-dark .nav-link.active {
+    color: rgb(255 76 96) !important;
+    font-weight: bold;
+    
+  }
+
+  #mainNavbar a {
+    font-weight: bold;
+  }
+  /* Hover effect for nav links (both in light & dark mode) */
+.navbar .nav-link:hover {
+    color: rgb(255, 76, 96) !important;
+    text-decoration: underline;
+    text-decoration-color: rgb(255, 76, 96);
+    text-underline-offset: 4px;
+    font-weight: bold;
+    transition: color 0.3s, text-decoration-color 0.3s;
+  }
+
+  #navbarbrand span{
+    color: rgb(255, 76, 96);
+  }
+
+  #navbarbrand {
+    font-size: 200%;
+  }
+
+  .footer-bg {
+    background-color: transparent;
+  }
+  
+  .card {
+    background-color: #3741512a; /* dark mode card background */
+    color: #e5e7eb;
+    border: none;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .light-mode .card {
+    background-color: #ffffff5b; /* light mode card background */
+    color: #374151;
+  }
+  
+  .card .card-title {
+    font-weight: bold;
+    color: rgb(255, 76, 96); /* pink highlight for titles */
+  }
+  
+  body.light-mode .card .card-title {
+    color: rgb(255, 76, 96);
+  }
+  
+  .card .btn-primary {
+    background-color: rgb(255, 76, 96);
+    border-color: rgb(255, 76, 96);
+    transition: background-color 0.3s, border-color 0.3s;
+  }
+  
+  .card .btn-primary:hover {
+    background-color: #ff3c60;
+    border-color: #ff3c60;
+  }
+  
+  body.light-mode .card .btn-primary {
+    background-color: rgb(255, 76, 96);
+    border-color: rgb(255, 76, 96);
+  }
+  
+  .card-img-top {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05); /* subtle separation */
+  }
+
+  .viewall {
+    background-color: #ff3c60;
+    color: #e5e7eb;
+    border: none;
+    border-radius: 200px;
+    font-size: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-weight: bold;
+
+  }
+
+  .viewall:hover {
+    background-color: #e63356; /* darker red */
+  }
+
+  
+  .light-mode #about li {
+    background-color: #ffffff;
+    color: #374151;
+  }
+
+  #about li {
+    background-color: #3741510c;
+      color: #e5e7eb;
+  }
+
+  @font-face {
+    font-family: 'XXII-Centar';
+    src: url('../fonts/xxiicentarheavyext.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  
+  /* Apply to all text */
+  * {
+    font-family: 'Rubik', sans-serif;
+  }
+  
+  .name {
+    font-size: 30px;
+  }
+
+  #particles-js {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    top: 0;
+    left: 0;
+  }
+  
+  /* Modal Styles */
+.image-modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  padding-top: 60px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.85);
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.image-modal img {
+  margin: auto;
+  display: block;
+  max-width: 90%;
+  max-height: 80vh;
+  border-radius: 8px;
+  animation: zoomIn 0.3s ease-in-out;
+  box-shadow: 0 0 20px rgba(255, 76, 96, 0.7);
+  transition: transform 0.3s ease-in-out;
+}
+
+.image-modal .close-btn {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  color: #fff;
+  font-size: 35px;
+  font-weight: bold;
+  transition: 0.3s;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.image-modal .close-btn:hover {
+  color: #ff4c60;
+}
+
+/* Animations */
+@keyframes zoomIn {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    background-color: rgba(0,0,0,0);
+  }
+  to {
+    background-color: rgba(0,0,0,0.85);
+  }
+}
+
+/* Hide the extra text by default */
+.more-content {
+  display: none;
+}
+
+/* Style the “See More” link */
+.read-more {
+  color: #ffffff38;
+  cursor: pointer;
+  text-decoration: none;
+  margin-left: 0.25rem;
+  font-size: small;
+}
+
+.light-mode .read-more {
+  color: #3741516b;
+  cursor: pointer;
+  text-decoration: none;
+  margin-left: 0.25rem;
+  font-size: small;
+}
+
+.read-more:hover {
+  text-decoration: underline;
+}
+
+#quizzes img {
+  object-fit: cover;
+  object-position: center;
+  padding: 0px;
+  margin: 0px;
+}
+
+.more-content {
+  display: none;
+}
+
+.ellipsis     { 
+  display: inline; 
+  transition: opacity 0.2s; }
+
+.more-content {
+  /* this ensures slideUp/slideDown works nicely */
+  overflow: hidden;
+}
+
+

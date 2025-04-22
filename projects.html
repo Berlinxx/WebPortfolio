@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Projects</title>
+
+  <!-- 🔧 Critical early theme + icon setup -->
+  <script>
+    (function () {
+      const savedTheme = localStorage.getItem('theme');
+      const isLight = savedTheme === 'light';
+
+      if (isLight) {
+        document.documentElement.classList.add('light-mode');
+      }
+
+      // Pre-render icon HTML into a global var before page load
+      window.__themeIcon = `<img id="themeIcon" src="images/${isLight ? 'lightmode.png' : 'darkmode.png'}" alt="Theme Icon" style="width: 1.5rem; height: 1.5rem;">`;
+    })();
+  </script>
+
+  <!-- Preload icons to prevent delays -->
+  <link rel="preload" as="image" href="images/lightmode.png">
+  <link rel="preload" as="image" href="images/darkmode.png">
+  <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+</head>
+<body>
+  <div id="particles-js"></div>
+  <nav id="mainNavbar" class="navbar navbar-expand-lg navbar-dark navbarcustom">
+    <div class="container-fluid">
+      <a id="navbarbrand" class="navbar-brand" href="index.html">My School Archive<span>.</span></a>
+      <button id="hamburger" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <!-- Custom Hamburger Icon -->
+        <svg id="navbar-hamburger" version="1.0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512.000000 512.000000"
+          preserveAspectRatio="xMidYMid meet" stroke="none">
+          <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)">
+            <path d="M2524 4008 c-44 -21 -52 -80 -16 -120 14 -17 70 -18 897 -18 827 0
+            883 1 897 18 37 41 28 100 -19 121 -33 15 -1728 14 -1759 -1z"/>
+            <path d="M824 2617 c-35 -30 -37 -79 -5 -110 l22 -22 1719 0 1719 0 22 22 c32
+            31 30 80 -5 110 l-27 23 -1709 0 -1709 0 -27 -23z"/>
+            <path d="M818 1233 c-37 -42 -28 -101 19 -122 34 -16 3412 -16 3446 0 47 21
+            56 80 19 122 -14 16 -110 17 -1742 17 -1632 0 -1728 -1 -1742 -17z"/>
+          </g>
+        </svg>
+      </button>      
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item navfont"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item navfont"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item navfont"><a class="nav-link" href="quizzes.html">Quizzes</a></li>
+          <li class="nav-item navfont"><a class="nav-link" href="projects.html">Projects</a></li>
+          <li class="nav-item navfont">
+            <!-- 🚫 No delay because we're rendering correct icon immediately -->
+            <button id="modeToggle" class="btn ms-2">
+              <script>document.write(window.__themeIcon);</script>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Projects Section -->
+  <main class="container-fluid my-5">
+    <h2 class="text-center mb-4">My Projects</h2>
+    <div class="project-container row g-4">
+
+      <!-- Project 1 -->
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+        <div class="card h-100 shadow-sm">
+          <img src="projects/Wearmania.png" class="card-img-top" alt="Project 1 Screenshot">
+          <div class="card-body">
+            <h5 class="card-title">Wearmania</h5>
+            <p class="card-text">This project is a user-friendly clothing display website where visitors can browse a curated selection of apparel. Designed for easy navigation and visual appeal, it showcases a range of styles to help users explore and discover clothing items seamlessly.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- You can repeat the above block for additional projects -->
+
+    </div>
+  </main>
+
+  <footer class="footer-bg py-4 mt-5">
+    <div class="container text-center">
+      <p class="mb-2"><b>Contact Me</b></p>
+      <ul class="list-unstyled d-flex flex-column flex-sm-row justify-content-center gap-4 mb-3">
+        <li>
+          <a href="mailto:michaelvicedo99@gmail.com" class="footera">
+            <i class="bi bi-envelope-fill"></i> michaelvicedo99@gmail.com
+          </a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/in/michael-vicedo-b954332bb/" target="_blank" class="footera">
+            <i class="bi bi-linkedin"></i> LinkedIn
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/Berlinxx" target="_blank" class="footera">
+            <i class="bi bi-github"></i> GitHub
+          </a>
+        </li>
+      </ul>
+      <p class="mb-0">&copy; 2025 Michael Vicedo. All rights reserved.</p>
+    </div>
+  </footer>
+  
+  
+  
+
+  <!-- Image Popup Modal -->
+  <div id="imageModal" class="image-modal" onclick="closeModal()">
+    <span class="close-btn">&times;</span>
+    <img class="modal-content" id="modalImg">
+  </div>
+
+  <!-- JS & jQuery -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="navbar.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+</body>
+</html>
