@@ -388,4 +388,29 @@ body footer .footera {
   overflow: hidden;
 }
 
+/* default */
+#navbarbrand {
+  font-size: 1.75rem; /* or whatever you had */
+}
+
+/* small tablets and below */
+@media (max-width: 768px) {
+  #navbarbrand {
+    font-size: 1.5rem;
+  }
+}
+
+/* phones in portrait */
+@media (max-width: 576px) {
+  #navbarbrand {
+    font-size: 1.25rem;
+  }
+}
+
+/* extra small (e.g. 300px–400px) */
+@media (max-width: 400px) {
+  #navbarbrand {
+    font-size: 1rem;
+  }
+}
 
