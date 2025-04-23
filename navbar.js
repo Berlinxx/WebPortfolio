@@ -68,13 +68,12 @@ $(document).ready(function () {
     if (fullText.length <= charLimit) return; // no need to truncate
 
     // split into visible + hidden chunks
-    const visibleText = fullText.slice(0, charLimit);
-    const hiddenText  = fullText.slice(charLimit);
+    const visibleText = fullText.slice(0, charLimit).trim(); // Trim to ensure no trailing spaces
+    const hiddenText  = fullText.slice(charLimit).trim();   // Trim to ensure no leading spaces
 
     // overwrite with truncated + hidden + toggle link
     $(this).html(`
-      ${visibleText}<span class="ellipsis">…</span>
-      <span class="more-content">${hiddenText}</span>
+      ${visibleText}<span class="ellipsis">…</span><span class="more-content">${hiddenText}</span>
       <a href="#" class="read-more">See More</a>
     `);
   });
