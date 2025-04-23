@@ -88,12 +88,12 @@ $(document).ready(function () {
     if ($more.is(':visible')) {
       // collapse
       $more.slideUp(200);
-      $ellipsis.fadeIn(200);
+      $ellipsis.fadeIn(400);
       $link.text('See More');
     } else {
       // expand
-      $ellipsis.fadeOut(200);
-      $more.slideDown(200);
+      $ellipsis.fadeOut(400);
+      $more.slideDown(400);
       $link.text('See Less');
     }
   });
