@@ -18,14 +18,13 @@ function initNavbar() {
   const saved = localStorage.getItem('theme');
   if (saved === 'light') $('html').addClass('light-mode');
   updateIcon($('html').hasClass('light-mode'));
-
   $('#modeToggle').off('click').on('click', () => {
     const nowLight = $('html').toggleClass('light-mode').hasClass('light-mode');
     updateIcon(nowLight);
     localStorage.setItem('theme', nowLight ? 'light' : 'dark');
   });
 
-  // — Active‐link highlighting
+  // — Active-link highlighting
   const current = window.location.pathname.split('/').pop() || 'index.html';
   $('.nav-link').each(function () {
     $(this).toggleClass('active', $(this).attr('href') === current);
@@ -43,24 +42,21 @@ function initNavbar() {
     });
   }
 
-// Image-click modal
-if ($('#imageModal').length) {
-  $('.card-img-top').css('cursor','pointer').on('click', function() {
-    $('#modalImg').attr('src', this.src);
-    $('#imageModal')
-      .addClass('image-modal--visible')  // show as flex
-      .hide()                            // start hidden
-      .fadeIn(200);
-  });
-
-  $('#imageModal').on('click', () => {
-    $('#imageModal')
-      .fadeOut(200, () => {
+  // — Image-click modal
+  if ($('#imageModal').length) {
+    $('.card-img-top').css('cursor','pointer').on('click', function() {
+      $('#modalImg').attr('src', this.src);
+      $('#imageModal')
+        .addClass('image-modal--visible')
+        .hide()
+        .fadeIn(200);
+    });
+    $('#imageModal').on('click', () => {
+      $('#imageModal').fadeOut(200, () => {
         $('#imageModal').removeClass('image-modal--visible');
       });
-  });
-}
-
+    });
+  }
 
   // — “See More” truncation
   const charLimit = 100;
@@ -69,17 +65,20 @@ if ($('#imageModal').length) {
     const full  = $p.text().trim();
     if (full.length <= charLimit) return;
 
-    const vis = full.slice(0, charLimit).trim();
-    const hid = full.slice(charLimit).trim();
-    $p.html(`
-      ${vis}
-      <span class="ellipsis">…</span>
-      <span class="more-content" style="display:none;">${hid}</span>
-      <a href="#" class="read-more">See More</a>
-    `);
+    // split text
+    const visible = full.slice(0, charLimit);
+    const hidden  = full.slice(charLimit);
+
+    // inject spans
+    $p.html(
+      visible +
+      '<span class="ellipsis">…</span>' +
+      `<span class="more-content" style="display:none;">${hidden}</span>` +
+      '<a href="#" class="read-more">See More</a>'
+    );
   });
 
-  // Unbind any old and bind exactly one delegated handler
+  // — delegate toggle handler exactly once
   $('.project-container')
     .off('click', '.read-more')
     .on('click', '.read-more', function(e) {
@@ -87,16 +86,18 @@ if ($('#imageModal').length) {
       const $link     = $(this);
       const $ellipsis = $link.siblings('.ellipsis');
       const $more     = $link.siblings('.more-content');
-      const show      = !$more.is(':visible');
+      const showing   = $more.is(':visible');
 
-      if (show) {
-        $ellipsis.fadeOut(200);
-        $more.slideDown(200);
-        $link.text('See Less');
-      } else {
+      if (showing) {
+        // hide extra, show ellipsis
         $more.slideUp(200);
         $ellipsis.fadeIn(200);
         $link.text('See More');
+      } else {
+        // show extra, hide ellipsis
+        $ellipsis.fadeOut(200);
+        $more.slideDown(200);
+        $link.text('See Less');
       }
     });
 }
