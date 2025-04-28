@@ -57,52 +57,47 @@ function initNavbar() {
       });
     });
   }
-
-  // — “See More” truncation
-  const charLimit = 100;
-  $('.card-text').each(function () {
-    const $p    = $(this);
-    const full  = $p.text().trim();
-    if (full.length <= charLimit) return;
-
-    // split text
-    const visible = full.slice(0, charLimit);
-    const hidden  = full.slice(charLimit);
-
-    // inject spans
-    $p.html(
-      visible +
-      '<span class="ellipsis">…</span>' +
-      `<span class="more-content" style="display:none;">${hidden}</span>` +
-      '<a href="#" class="read-more">See More</a>'
-    );
-  });
-
-  // — delegate toggle handler exactly once
-  $('.project-container')
-    .off('click', '.read-more')
-    .on('click', '.read-more', function(e) {
-      e.preventDefault();
-      const $link     = $(this);
-      const $ellipsis = $link.siblings('.ellipsis');
-      const $more     = $link.siblings('.more-content');
-      const showing   = $more.is(':visible');
-
-      if (showing) {
-        // hide extra, show ellipsis
-        $more.slideUp(200);
-        $ellipsis.fadeIn(200);
-        $link.text('See More');
-      } else {
-        // show extra, hide ellipsis
-        $ellipsis.fadeOut(200);
-        $more.slideDown(200);
-        $link.text('See Less');
-      }
-    });
 }
 
 // 3️⃣ Kickoff on DOM ready
 $(function(){
   loadNavbar();
+});
+
+$(document).ready(function () {
+  const charLimit = 100;
+  $('.card-text').each(function () {
+    const fullText = $(this).text().trim();
+    if (fullText.length <= charLimit) return; // no need to truncate
+
+    // split into visible + hidden chunks
+    const visibleText = fullText.slice(0, charLimit).trim(); // Trim to ensure no trailing spaces
+    const hiddenText  = fullText.slice(charLimit).trim();   // Trim to ensure no leading spaces
+
+    // overwrite with truncated + hidden + toggle link
+    $(this).html(`
+      ${visibleText}<span class="ellipsis">…</span><span class="more-content">${hiddenText}</span>
+      <a href="#" class="read-more">See More</a>
+    `);
+  });
+
+  // delegated click handler (works even if you add more cards later)
+  $('.project-container').on('click', '.read-more', function (e) {
+    e.preventDefault();
+    const $link     = $(this);
+    const $ellipsis = $link.siblings('.ellipsis');
+    const $more     = $link.siblings('.more-content');
+
+    if ($more.is(':visible')) {
+      // collapse
+      $more.slideUp(200);
+      $ellipsis.fadeIn(400);
+      $link.text('See More');
+    } else {
+      // expand
+      $ellipsis.fadeOut(400);
+      $more.slideDown(400);
+      $link.text('See Less');
+    }
+  });
 });

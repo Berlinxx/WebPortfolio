@@ -348,13 +348,12 @@ body footer .footera {
 }
 
 .ellipsis     { 
-  display: inline-block; 
+  display: inline; 
   transition: opacity 0.2s; }
 
 .more-content {
   /* this ensures slideUp/slideDown works nicely */
   overflow: hidden;
-  display: none;
 }
 
 /* default */
