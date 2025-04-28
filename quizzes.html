@@ -24,206 +24,189 @@
   <link rel="preload" as="image" href="images/lightmode.png">
   <link rel="preload" as="image" href="images/darkmode.png">
   <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
-
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-
 </head>
 <body>
   <div id="particles-js"></div>
 
   <div id="navbar-placeholder"></div>
-  
   <script>
     (async function(){
       const resp = await fetch('navbar.html');
       document.getElementById('navbar-placeholder').innerHTML = await resp.text();
-      initNavbar();       // wire up toggle, active‐link, particles, etc.
+      initNavbar(); // wire up toggle, active-link, particles, etc.
     })();
   </script>
-  
-  <main class="container my-5" id="quizzes">
-    <h2 class="text-center mb-4">Pre-tests</h2>
-    <div class="project-container row g-4">
-  
-      <!-- Project 1 -->
-      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-        <div class="card h-100 shadow-sm">
-          <img src="quizzes/Pretest-1.jpg" class="card-img-top" alt="Quiz 1 Screenshot">
-          <div class="card-body">
-            <h5 class="card-title">Pretest 1</h5>
-            <p class="card-text">Score: 15/15</p>
-            <!-- <a href="#" class="btn btn-primary" target="_blank">View Project</a> -->
-          </div>
-        </div>
-      </div>
-      
-      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-        <div class="card h-100 shadow-sm">
-          <img src="quizzes/Pretest-2.png" class="card-img-top" alt="Quiz 2 Screenshot">
-          <div class="card-body">
-            <h5 class="card-title">Pretest 2</h5>
-            <p class="card-text"> Score: 13/15</p>
-            <!-- <a href="#" class="btn btn-primary" target="_blank">View Project</a> -->
-          </div>
-        </div>
-      </div>
 
-      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+  <!-- Pre-tests -->
+  <main class="container my-5">
+    <h2 class="text-center mb-4 title">My <span class="redtext">Pre-tests</span></h2>
+    <div class="row g-4 justify-content-center">
+      <!-- Pretest 1 -->
+      <div class="col-12 col-sm-6 col-md-4">
         <div class="card h-100 shadow-sm">
-          <img src="quizzes/Pretest-3.png" class="card-img-top" alt="Quiz 3 Screenshot">
+          <div class="card-header text-center">
+            <h5 class="card-title mb-0">Pretest 1</h5>
+          </div>
+          <img src="quizzes/Pretest-1.jpg" class="card-img-top" alt="Pretest 1">
           <div class="card-body">
-            <h5 class="card-title">Pretest 3</h5>
-            <p class="card-text">Score: 13/15</p>
-            <!-- <a href="#" class="btn btn-primary" target="_blank">View Project</a> -->
+            <p class="card-text"><span class="redtext">Score:</span> 15/15</p>
           </div>
         </div>
       </div>
-
-      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+      <!-- Pretest 2 -->
+      <div class="col-12 col-sm-6 col-md-4">
         <div class="card h-100 shadow-sm">
-          <img src="quizzes/Pretest-4.png" class="card-img-top" alt="Quiz 4 Screenshot">
+          <div class="card-header text-center">
+            <h5 class="card-title mb-0">Pretest 2</h5>
+          </div>
+          <img src="quizzes/Pretest-2.png" class="card-img-top" alt="Pretest 2">
           <div class="card-body">
-            <h5 class="card-title">Pretest 4</h5>
-            <p class="card-text">Score: 5/15</p>
-            <!-- <a href="#" class="btn btn-primary" target="_blank">View Project</a> -->
+            <p class="card-text"><span class="redtext">Score:</span> 13/15</p>
           </div>
         </div>
       </div>
-
-      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+      <!-- Pretest 3 -->
+      <div class="col-12 col-sm-6 col-md-4">
         <div class="card h-100 shadow-sm">
-          <img src="quizzes/Pretest-5.png" class="card-img-top" alt="Quiz 5Screenshot">
+          <div class="card-header text-center">
+            <h5 class="card-title mb-0">Pretest 3</h5>
+          </div>
+          <img src="quizzes/Pretest-3.png" class="card-img-top" alt="Pretest 3">
           <div class="card-body">
-            <h5 class="card-title">Pretest 5</h5>
-            <p class="card-text">Score: 18/20</p>
-            <!-- <a href="#" class="btn btn-primary" target="_blank">View Project</a> -->
+            <p class="card-text"><span class="redtext">Score:</span> 13/15</p>
           </div>
         </div>
       </div>
-      
+      <!-- Pretest 4 -->
+      <div class="col-12 col-sm-6 col-md-4">
+        <div class="card h-100 shadow-sm">
+          <div class="card-header text-center">
+            <h5 class="card-title mb-0">Pretest 4</h5>
+          </div>
+          <img src="quizzes/Pretest-4.png" class="card-img-top" alt="Pretest 4">
+          <div class="card-body">
+            <p class="card-text"><span class="redtext">Score:</span> 5/15</p>
+          </div>
+        </div>
+      </div>
+      <!-- Pretest 5 -->
+      <div class="col-12 col-sm-6 col-md-4">
+        <div class="card h-100 shadow-sm">
+          <div class="card-header text-center">
+            <h5 class="card-title mb-0">Pretest 5</h5>
+          </div>
+          <img src="quizzes/Pretest-5.png" class="card-img-top" alt="Pretest 5">
+          <div class="card-body">
+            <p class="card-text"><span class="redtext">Score:</span> 18/20</p>
+          </div>
+        </div>
+      </div>
     </div>
   </main>
 
-  <main class="container my-5" id="quizzes">
-    <h2 class="text-center mb-4">Pre-tests</h2>
-    <div class="project-container row g-4">
-  
-      <!-- Project 1 -->
-      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+  <!-- Post-tests -->
+  <main class="container my-5">
+    <h2 class="text-center mb-4 title">My <span class="redtext">Post-tests</span></h2>
+    <div class="row g-4 justify-content-center">
+      <!-- Post-test 1 -->
+      <div class="col-12 col-sm-6 col-md-4">
         <div class="card h-100 shadow-sm">
-          <img src="quizzes/Post-test1.jpg" class="card-img-top" alt="Post-test 1 Screenshot">
+          <div class="card-header text-center">
+            <h5 class="card-title mb-0">Post-test 1</h5>
+          </div>
+          <img src="quizzes/Post-test1.jpg" class="card-img-top" alt="Post-test 1">
           <div class="card-body">
-            <h5 class="card-title">Post-test 1</h5>
-            <p class="card-text">Score: 17/20</p>
-            <!-- <a href="#" class="btn btn-primary" target="_blank">View Project</a> -->
+            <p class="card-text"><span class="redtext">Score:</span> 17/20</p>
           </div>
         </div>
       </div>
-      
-      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+      <!-- Post-test 2 -->
+      <div class="col-12 col-sm-6 col-md-4">
         <div class="card h-100 shadow-sm">
-          <img src="quizzes/Post-test2.jpg" class="card-img-top" alt="Post-test 2 Screenshot">
+          <div class="card-header text-center">
+            <h5 class="card-title mb-0">Post-test 2</h5>
+          </div>
+          <img src="quizzes/Post-test2.jpg" class="card-img-top" alt="Post-test 2">
           <div class="card-body">
-            <h5 class="card-title">Post-test 2</h5>
-            <p class="card-text"> Score: 20/20</p>
-            <!-- <a href="#" class="btn btn-primary" target="_blank">View Project</a> -->
+            <p class="card-text"><span class="redtext">Score:</span> 20/20</p>
           </div>
         </div>
       </div>
-
-      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+      <!-- Post-test 3 -->
+      <div class="col-12 col-sm-6 col-md-4">
         <div class="card h-100 shadow-sm">
-          <img src="quizzes/Post-test3.jpg" class="card-img-top" alt="Post-test 3 Screenshot">
+          <div class="card-header text-center">
+            <h5 class="card-title mb-0">Post-test 3</h5>
+          </div>
+          <img src="quizzes/Post-test3.jpg" class="card-img-top" alt="Post-test 3">
           <div class="card-body">
-            <h5 class="card-title">Post-test 3</h5>
-            <p class="card-text">Score: 18/20</p>
-            <!-- <a href="#" class="btn btn-primary" target="_blank">View Project</a> -->
+            <p class="card-text"><span class="redtext">Score:</span> 18/20</p>
           </div>
         </div>
       </div>
-
-      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+      <!-- Post-test 4 -->
+      <div class="col-12 col-sm-6 col-md-4">
         <div class="card h-100 shadow-sm">
-          <img src="quizzes/Post-test4.jpg" class="card-img-top" alt="Post-test 4 Screenshot">
+          <div class="card-header text-center">
+            <h5 class="card-title mb-0">Post-test 4</h5>
+          </div>
+          <img src="quizzes/Post-test4.jpg" class="card-img-top" alt="Post-test 4">
           <div class="card-body">
-            <h5 class="card-title">Post-test 4</h5>
-            <p class="card-text">Score: 19/20</p>
-            <!-- <a href="#" class="btn btn-primary" target="_blank">View Project</a> -->
+            <p class="card-text"><span class="redtext">Score:</span> 19/20</p>
           </div>
         </div>
       </div>
-
-      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+      <!-- Post-test 5 -->
+      <div class="col-12 col-sm-6 col-md-4">
         <div class="card h-100 shadow-sm">
-          <img src="quizzes/Post-test5.jpg" class="card-img-top" alt="Post-test 5 Screenshot">
+          <div class="card-header text-center">
+            <h5 class="card-title mb-0">Post-test 5</h5>
+          </div>
+          <img src="quizzes/Post-test5.jpg" class="card-img-top" alt="Post-test 5">
           <div class="card-body">
-            <h5 class="card-title">Post-test5</h5>
-            <p class="card-text">Score: 20/20</p>
-            <!-- <a href="#" class="btn btn-primary" target="_blank">View Project</a> -->
+            <p class="card-text"><span class="redtext">Score:</span> 20/20</p>
           </div>
         </div>
       </div>
-      
     </div>
   </main>
 
-  <main class="container-fluid my-5" id="quizzes">
-    <h2 class="text-center mb-4">Long Quizzes</h2>
-    <div class="project-container row g-4">
-      <!-- Quiz 1 -->
-      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+  <!-- Long Quizzes -->
+  <main class="container my-5">
+    <h2 class="text-center mb-4 title">My <span class="redtext">Long Quizzes</span></h2>
+    <div class="row g-4 justify-content-center">
+      <div class="col-12 col-sm-6 col-md-4">
         <div class="card h-100 shadow-sm">
-          <img src="quizzes/Long_quiz.jpg" class="card-img-top" alt="Long quiz Screenshot">
+          <div class="card-header text-center">
+            <h5 class="card-title mb-0">Long Quiz</h5>
+          </div>
+          <img src="quizzes/Long_quiz.jpg" class="card-img-top" alt="Long Quiz">
           <div class="card-body">
-            <h5 class="card-title">Long Quiz</h5>
-            <p class="card-text">Score: 35/40</p>
+            <p class="card-text"><span class="redtext">Score:</span> 35/40</p>
           </div>
         </div>
       </div>
-
-      <!-- Other Quizzes
-      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-        <div class="card h-100 shadow-sm">
-          <img src="quizzes/Pretest-2.png"class="card-img-top" alt="Quiz 2 Screenshot">
-          <div class="card-body">
-            <h5 class="card-title">Pretest 2</h5>
-            <p class="card-text"> Score: 13/15</p>
-          </div>
-        </div>
-      </div> -->
-      
-      <!-- More Quiz Cards ... -->
     </div>
   </main>
 
-  <main class="container-fluid my-5" id="quizzes">
-    <h2 class="text-center mb-4">Exams</h2>
-    <div class="project-container row g-4">
-      <!-- Quiz 1 -->
-      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+  <!-- Exams -->
+  <main class="container my-5">
+    <h2 class="text-center mb-4 title">My <span class="redtext">Exams</span></h2>
+    <div class="row g-4 justify-content-center">
+      <div class="col-12 col-sm-6 col-md-4">
         <div class="card h-100 shadow-sm">
-          <img src="quizzes/Exam.jpg" class="card-img-top" alt="Exam Screenshot">
+          <div class="card-header text-center">
+            <h5 class="card-title mb-0">Midterm Exam</h5>
+          </div>
+          <img src="quizzes/Exam.jpg" class="card-img-top" alt="Midterm Exam">
           <div class="card-body">
-            <h5 class="card-title">Midterm Exam</h5>
-            <p class="card-text">Score: 51/70</p>
+            <p class="card-text"><span class="redtext">Score:</span> 51/70</p>
           </div>
         </div>
       </div>
-
-      <!-- Other Quizzes
-      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-        <div class="card h-100 shadow-sm">
-          <img src="quizzes/Pretest-2.png"class="card-img-top" alt="Quiz 2 Screenshot">
-          <div class="card-body">
-            <h5 class="card-title">Pretest 2</h5>
-            <p class="card-text"> Score: 13/15</p>
-          </div>
-        </div>
-      </div> -->
-      
-      <!-- More Quiz Cards ... -->
     </div>
   </main>
 
@@ -231,32 +214,19 @@
     <div class="container text-center">
       <p class="mb-2"><b>Contact Me</b></p>
       <ul class="list-unstyled d-flex flex-column flex-sm-row justify-content-center gap-4 mb-3">
-        <li>
-          <a href="mailto:michaelvicedo99@gmail.com" class="footera">
-            <i class="bi bi-envelope-fill"></i> michaelvicedo99@gmail.com
-          </a>
-        </li>
-        <li>
-          <a href="https://www.linkedin.com/in/michael-vicedo-b954332bb/" target="_blank" class="footera">
-            <i class="bi bi-linkedin"></i> LinkedIn
-          </a>
-        </li>
-        <li>
-          <a href="https://github.com/Berlinxx" target="_blank" class="footera">
-            <i class="bi bi-github"></i> GitHub
-          </a>
-        </li>
+        <li><a href="mailto:michaelvicedo99@gmail.com" class="footera"><i class="bi bi-envelope-fill"></i> michaelvicedo99@gmail.com</a></li>
+        <li><a href="https://www.linkedin.com/in/michael-vicedo-b954332bb/" target="_blank" class="footera"><i class="bi bi-linkedin"></i> LinkedIn</a></li>
+        <li><a href="https://github.com/Berlinxx" target="_blank" class="footera"><i class="bi bi-github"></i> GitHub</a></li>
       </ul>
       <p class="mb-0">&copy; 2025 Michael Vicedo. All rights reserved.</p>
     </div>
   </footer>
 
-    <!-- Image Popup Modal -->
-<div id="imageModal" class="image-modal" onclick="closeModal()">
-  <span class="close-btn">&times;</span>
-  <img class="modal-content" id="modalImg">
-</div>
-  
+  <!-- Image Popup Modal -->
+  <div id="imageModal" class="image-modal" onclick="closeModal()">
+    <span class="close-btn">&times;</span>
+    <img class="modal-content" id="modalImg">
+  </div>
 
   <!-- JS & jQuery -->
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
