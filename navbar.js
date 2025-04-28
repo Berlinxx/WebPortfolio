@@ -1,5 +1,12 @@
 // navbar.js
 
+// Load navbar.html, inject it, then initialize all behavior:
+async function loadNavbar() {
+  const resp = await fetch('navbar.html');
+  const html = await resp.text();
+  document.getElementById('navbar-placeholder').innerHTML = html;
+  initNavbar();
+}
 
 function initNavbar() {
   // 1️⃣ Dark/Light toggle
