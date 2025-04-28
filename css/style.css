@@ -6,37 +6,6 @@ body {
   margin-right: 0; /* Removed fixed margin */
 }
 
-#navbar-hamburger {
-  width: 30px;
-  height: 30px;
-}
-
-/* Remove border and outline from the hamburger menu button */
-#hamburger {
-  border: none;         /* Remove the border */
-  outline: none;        /* Remove the outline */
-  background: transparent; /* Remove background, so only the SVG is visible */
-}
-
-#hamburger:focus {
-  outline: none;        /* Remove the outline on focus */
-}
-
-
-#navbar-hamburger path {
-  fill: rgb(255 76 96);
-  stroke: none !important;
-}
-
-
-svg {
-  stroke: none !important;
-}
-
-.light-mode #navbar-hamburger path {
-  fill: rgb(255 76 96);
-}
-
 @media (max-width: 767px) {
   /* Adjustments for smaller screens */
   .navbarcustom {
@@ -414,3 +383,50 @@ body footer .footera {
   }
 }
 
+#navbar-hamburger {
+  width: 30px;
+  height: 30px;
+}
+
+/* Remove border and outline from the hamburger menu button */
+#hamburger {
+  border: none;         /* Remove the border */
+  outline: none;        /* Remove the outline */
+  background: transparent; /* Remove background, so only the SVG is visible */
+}
+
+#hamburger:focus {
+  outline: none;        /* Remove the outline on focus */
+}
+
+
+#navbar-hamburger path {
+  fill: rgb(255 76 96);
+  stroke: none !important;
+}
+
+
+svg {
+  stroke: none !important;
+}
+
+.light-mode #navbar-hamburger path {
+  fill: rgb(255 76 96);
+}
+
+/* remove outline & box-shadow on the hamburger button when focused or active */
+.navbar-toggler,
+#hamburger {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.navbar-toggler:focus,
+.navbar-toggler:active,
+.navbar-toggler:focus-visible,
+#hamburger:focus,
+#hamburger:active,
+#hamburger:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+}

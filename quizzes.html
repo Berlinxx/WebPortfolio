@@ -32,40 +32,17 @@
 </head>
 <body>
   <div id="particles-js"></div>
-  <nav id="mainNavbar" class="navbar navbar-expand-lg navbar-dark navbarcustom">
-    <div class="container-fluid">
-      <a id="navbarbrand" class="navbar-brand" href="index.html">My School Archive<span>.</span></a>
-      <button id="hamburger" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <!-- Custom Hamburger Icon -->
-        <svg id="navbar-hamburger" version="1.0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512.000000 512.000000"
-          preserveAspectRatio="xMidYMid meet" stroke="none">
-          <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)">
-            <path d="M2524 4008 c-44 -21 -52 -80 -16 -120 14 -17 70 -18 897 -18 827 0
-            883 1 897 18 37 41 28 100 -19 121 -33 15 -1728 14 -1759 -1z"/>
-            <path d="M824 2617 c-35 -30 -37 -79 -5 -110 l22 -22 1719 0 1719 0 22 22 c32
-            31 30 80 -5 110 l-27 23 -1709 0 -1709 0 -27 -23z"/>
-            <path d="M818 1233 c-37 -42 -28 -101 19 -122 34 -16 3412 -16 3446 0 47 21
-            56 80 19 122 -14 16 -110 17 -1742 17 -1632 0 -1728 -1 -1742 -17z"/>
-          </g>
-        </svg>
-      </button>      
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item navfont"><a class="nav-link" href="index.html">Home</a></li>
-          <li class="nav-item navfont"><a class="nav-link" href="about.html">About</a></li>
-          <li class="nav-item navfont"><a class="nav-link" href="quizzes.html">Quizzes</a></li>
-          <li class="nav-item navfont"><a class="nav-link" href="projects.html">Projects</a></li>
-          <li class="nav-item navfont">
-            <!-- 🚫 No delay because we're rendering correct icon immediately -->
-            <button id="modeToggle" class="btn ms-2">
-              <script>document.write(window.__themeIcon);</script>
-            </button>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
 
+  <div id="navbar-placeholder"></div>
+  
+  <script>
+    (async function(){
+      const resp = await fetch('navbar.html');
+      document.getElementById('navbar-placeholder').innerHTML = await resp.text();
+      initNavbar();       // wire up toggle, active‐link, particles, etc.
+    })();
+  </script>
+  
   <main class="container my-5" id="quizzes">
     <h2 class="text-center mb-4">Pre-tests</h2>
     <div class="project-container row g-4">
