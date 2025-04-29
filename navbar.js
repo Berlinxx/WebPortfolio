@@ -100,4 +100,14 @@ $(document).ready(function () {
       $link.text('See Less');
     }
   });
+
+    new Typed("#typed-output", {
+      strings: ["Undergraduate Student", "Beginner in IT Field"],
+      typeSpeed: 50,
+      backSpeed: 30,
+      backDelay: 1500,
+      loop: true
+    });
 });
+
+
