@@ -1,248 +1,636 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Home</title>
-
-  <!-- 🔧 Critical early theme + icon setup -->
-  <script>
-    (function () {
-      const savedTheme = localStorage.getItem('theme');
-      const isLight = savedTheme === 'light';
-
-      if (isLight) {
-        document.documentElement.classList.add('light-mode');
-      }
-
-      // Pre-render icon HTML into a global var before page load
-      window.__themeIcon = `<img id="themeIcon" src="images/${isLight ? 'lightmode.png' : 'darkmode.png'}" alt="Theme Icon" style="width: 1.5rem; height: 1.5rem;">`;
-    })();
-  </script>
-
-  <!-- Preload icons to prevent delays -->
-  <link rel="preload" as="image" href="images/lightmode.png">
-  <link rel="preload" as="image" href="images/darkmode.png">
-
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-
-  <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
-
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css" />
-
-  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
-  <link rel="manifest" href="images/site.webmanifest">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="jigar sable, portfolio, jigar, full stack dev, personal portfolio lifecodes, portfolio design, portfolio website, personal portfolio" />
+    <meta name="description" content="Welcome to Jigar's Portfolio. Full-Stack Web Developer and Android App Developer" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Favicon -->
+    <link id="favicon" rel="icon" href="images/favicon.svg" type="image/svg+xml">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+    <!-- SilverBox CSS -->
+    <link rel="stylesheet" href="./assets/css/silverBox.min.css">
+    <title>Portfolio | Michael Vicedo</title>
+<style>
+  .box.tilt .content .project-description {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 0.3s ease-out, max-height 0.5s ease-out;
+    margin-top: 10px; 
+    font-size: 1.1rem; /* Increased font size for description */
+  }
+  .box.tilt:hover .content .project-description {
+    opacity: 1;
+    max-height: 10em; /* Adjust if more/less text */
+  }
+  .project-buttons {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding: 0 1.5rem 1.5rem 1.5rem; /* Add horizontal and bottom padding for button spacing */
+  }
+  .project-action-btn {
+    background-color: #1a1a1a;
+    color: white !important;
+    padding: 10px 22px; /* Increased padding for larger button */
+    margin: 0 0.5rem; /* Add horizontal margin between buttons and card edge */
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    display: inline-flex;
+    align-items: center;
+    border: none;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  }
+  .project-action-btn:hover {
+    background-color: #333; /* Slightly lighter on hover */
+    color: white !important;
+  }
+  .project-action-btn i {
+    margin-right: 6px; 
+  }
+</style>
 </head>
 <body>
-  <div id="particles-js"></div>
-  <div id="navbar-placeholder"></div>
 
-  <script>
-    (async function(){
-      const resp = await fetch('navbar.html');
-      document.getElementById('navbar-placeholder').innerHTML = await resp.text();
-      initNavbar();       // wire up toggle, active‐link, particles, etc.
-    })();
-  </script>
+<!-- navbar starts -->
+<header>
+        <a href="#home" class="logo">
+            <img src="images/favicon.svg" alt="Michael Vicedo logo" style="width:2.5rem; height:2.5rem; margin-right:0.5rem; vertical-align:middle;">
+            Michael Vicedo
+        </a>
 
-  <main class="container-fluid my-5">
-    <h2 class="text-center mb-4 title">My <span class="redtext">Projects</span></h2>
-    <div class="project-container row g-4">
-      <!-- Project 1 -->
-      <div class="col-12 col-sm-6 col-md-4 col-lg-6">
-        <div class="card h-100 shadow-sm">
-          <img src="projects/Wearmania.png" class="card-img-top" alt="Project 1 Screenshot">
-          <div class="card-body">
-            <h5 class="card-title">Wearmania</h5>
-            <p class="card-text">This project is a user-friendly clothing display website where visitors can browse a curated selection of apparel. Designed for easy navigation and visual appeal, it showcases a range of styles to help users explore and discover clothing items seamlessly.</p>
+        <div id="menu" class="fas fa-bars"></div>
+        <nav class="navbar">
+            <ul>
+            <li><a class="active" href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#quizzes">Quizzes</a></li>
+            <li><a href="#lab">Lab Activities</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+</header>
+<!-- navbar ends -->
+
+
+<!-- hero section starts -->
+<section class="home" id="home">
+    <div id="particles-js"></div>
+
+    <div class="content">
+    <h2>Hi There,<br/> I'm Michael <span>Vicedo</span></h2>
+    <p>I am into <span class="typing-text"></span></p>
+    <a href="#about" class="btn"><span>About Me</span>
+      <i class="fas fa-arrow-circle-down"></i>
+    </a>
+    <div class="socials">
+        <ul class="social-icons">
+          <li><a class="linkedin" aria-label="LinkedIn" href="https://www.linkedin.com/in/michael-vicedo-b954332bb/" target="_blank"><i class="fab fa-linkedin"></i></a></li> 
+          <li><a class="github" aria-label="GitHub" href="https://github.com/Berlinxx" target="_blank"><i class="fab fa-github"></i></a></li>
+          <li><a class="twitter" aria-label="Twitter" href="https://x.com/Maykel____?t=eO-zoNRBbCaQT-yYF6PYog&s=09" target="_blank"><i class="fab fa-twitter"></i></a></li>
+          <li><a class="telegram" aria-label="Telegram" href="https://t.me/michael1209" target="_blank"><i class="fab fa-telegram-plane"></i></a></li>
+          <li><a class="instagram" aria-label="Instagram" href="https://www.instagram.com/maykelvxx?igsh=dHljaDdjdXcxaDc3" target="_blank"><i class="fab fa-instagram"></i></a></li>
+          <!-- <li><a class="dev" aria-label="Dev" href="https://dev.to/jigarsable" target="_blank"><i class="fab fa-dev"></i></a></li> -->
+        </ul>
+      </div>
+    </div>
+<div class="image">
+    <img draggable="false" class="tilt" src="images/Hero.jpg" alt="">
+</div>
+</section>
+<!-- hero section ends -->
+
+
+<!-- about section starts -->
+<section class="about" id="about">
+    <h2 class="heading"><i class="fas fa-user-alt"></i> About <span>Me</span></h2>
+    
+    <div class="row">
+
+    <div class="image">
+        <img draggable="false" class="tilt" src="images/profile.jpg" alt="Michael A. Vicedo">
+        <!-- Skills Progress START: Moved and modified for 2x2 grid -->
+        <h4 class="mt-4" style="color: rgba(255,123,0,255); text-align: center; margin-top: 2rem !important; font-size: 1.8rem;">Skills Progress</h4>
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-around; gap: 1.5rem; margin-top: 1rem; padding: 0 1rem;">
+          <div style="flex: 1 1 40%; min-width: 200px;">
+            <div class="d-flex justify-content-between" style="font-size: 1.3rem; margin-bottom: 0.4rem;">
+              <span class="fw-bold">Backend</span><span>25%</span>
+            </div>
+            <div class="progress mb-3" style="height: 22px;">
+              <div class="progress-bar bg-primary" role="progressbar" style="width: 25%;"></div>
+            </div>
+          </div>
+          <div style="flex: 1 1 40%; min-width: 200px;">
+            <div class="d-flex justify-content-between" style="font-size: 1.3rem; margin-bottom: 0.4rem;">
+              <span class="fw-bold">Mobile App</span><span>20%</span>
+            </div>
+            <div class="progress" style="height: 22px;">
+              <div class="progress-bar bg-danger" role="progressbar" style="width: 20%;"></div>
+            </div>
+          </div>
+          <div style="flex: 1 1 40%; min-width: 200px; margin-top: 1rem;">
+            <div class="d-flex justify-content-between" style="font-size: 1.3rem; margin-bottom: 0.4rem;">
+              <span class="fw-bold">Frontend</span><span>25%</span>
+            </div>
+            <div class="progress mb-3" style="height: 22px;">
+              <div class="progress-bar bg-warning" role="progressbar" style="width: 25%;"></div>
+            </div>
+          </div>
+          <div style="flex: 1 1 40%; min-width: 200px; margin-top: 1rem;">
+            <div class="d-flex justify-content-between" style="font-size: 1.3rem; margin-bottom: 0.4rem;">
+              <span class="fw-bold">UI/UX</span><span>15%</span>
+            </div>
+            <div class="progress" style="height: 22px;">
+              <div class="progress-bar bg-success" role="progressbar" style="width: 15%;"></div>
+            </div>
           </div>
         </div>
+        <!-- Skills Progress END -->
+    </div>
+    <div class="content">
+        <h3>I'm <span>Michael A. Vicedo</span></h3>
+        <span id="typed-output"></span>
+        <span class="tag">Passionate BSIT-3B Undergraduate</span>
+        
+        <p>
+          Hello! I'm <strong>Michael A. Vicedo</strong>, a passionate BSIT-3B undergraduate. Although I'm just beginning my journey in Information Technology, I’m motivated to learn and grow every day.
+        </p>
+        <p>
+          My primary interest is in <strong>networking</strong>—setting up Wi-Fi and internet systems for homes and small businesses. Outside of tech, I maintain a strong focus on <strong>weightlifting</strong> to keep both mind and body healthy.
+        </p>
+        
+        <div class="box-container">
+            <div class="box">
+              <p style="font-size: 1.5rem;"><span>Age:</span> 23</p>
+              <p style="font-size: 1.5rem;"><span>Course & Section:</span> BSIT - 3B</p>
+              <p style="font-size: 1.5rem;"><span>Focus:</span> Networking & Internet Setup</p>
+            </div>
+            <div class="box">
+              <p style="font-size: 1.5rem;"><span>Hobbies:</span> Weightlifting, Fitness</p>
+              <p style="font-size: 1.5rem;"><span>Goal:</span> Specialize in Networking</p>
+              <p style="font-size: 1.5rem;"><span>Email:</span> michaelvicedo99@gmail.com</p>
+            </div>
+        </div>
+
+        <!-- Skills Progress section is now MOVED under the image -->
+
+        <h4 class="mt-4" style="color: rgba(255,123,0,255); font-size: 1.8rem;">Fun Stats</h4>
+        <!-- Stats Row -->
+        <div class="row text-center mb-4">
+          <div class="col-6 col-md-3 mb-3 fun-stat-item">
+            <i class="fas fa-cogs fs-1 text-secondary" style="font-size: 3.5rem !important; margin-bottom: 0.7rem;"></i>
+            <h4 class="mt-2" style="font-size: 2.2rem;">20+</h4>
+            <small style="font-size: 1.1rem;">Assignments Survived</small>
+          </div>
+          <div class="col-6 col-md-3 mb-3 fun-stat-item">
+            <i class="fas fa-coffee fs-1 text-secondary" style="font-size: 3.5rem !important; margin-bottom: 0.7rem;"></i>
+            <h4 class="mt-2" style="font-size: 2.2rem;">30+</h4>
+            <small style="font-size: 1.1rem;">Cup of Coffee</small>
+          </div>
+          <div class="col-6 col-md-3 mb-3 fun-stat-item">
+            <i class="fas fa-chart-bar fs-1 text-secondary" style="font-size: 3.5rem !important; margin-bottom: 0.7rem;"></i>
+            <h4 class="mt-2" style="font-size: 2.2rem;">99999+</h4>
+            <small style="font-size: 1.1rem;">All-Nighters Pulled</small>
+          </div>
+        </div>
+
+    </div>
+    </div>
+</section>
+<!-- about section ends -->
+
+
+<!-- quizzes section starts -->
+<section class="skills" id="quizzes">  <!-- Changed id to quizzes and kept class skills for styling -->
+
+    <h2 class="heading"><i class="fas fa-vial"></i> My <span>Quizzes</span></h2> <!-- Changed heading -->
+
+    <!-- Pre-tests -->
+    <div class="container my-5 ">
+        <h3 class="text-center mb-4 title" style="font-size: 2rem;">My <span class="redtext">Pre-tests</span></h3>
+        <div class="row g-4 justify-content-center">
+          <!-- Pretest 1 -->
+          <div class="col-12 col-sm-6 col-md-6 col-lg-4"> 
+            <div class="card shadow-sm tilt quiz-card"> 
+              <div class="card-header text-center">
+                <h5 class="card-title mb-0">Pretest 1</h5>
+              </div>
+              <img src="quizzes/Pretest-1.jpg" class="card-img-top" alt="Pretest 1">
+              <div class="card-body">
+                <p class="card-text"><span class="redtext">Score:</span> 15/15</p>
+              </div>
+            </div>
+          </div>
+          <!-- Pretest 2 -->
+          <div class="col-12 col-sm-6 col-md-6 col-lg-4"> 
+            <div class="card shadow-sm tilt quiz-card"> 
+              <div class="card-header text-center">
+                <h5 class="card-title mb-0">Pretest 2</h5>
+              </div>
+              <img src="quizzes/Pretest-2.png" class="card-img-top" alt="Pretest 2">
+              <div class="card-body">
+                <p class="card-text"><span class="redtext">Score:</span> 13/15</p>
+              </div>
+            </div>
+          </div>
+          <!-- Pretest 3 -->
+          <div class="col-12 col-sm-6 col-md-6 col-lg-4"> 
+            <div class="card shadow-sm tilt quiz-card"> 
+              <div class="card-header text-center">
+                <h5 class="card-title mb-0">Pretest 3</h5>
+              </div>
+              <img src="quizzes/Pretest-3.png" class="card-img-top" alt="Pretest 3">
+              <div class="card-body">
+                <p class="card-text"><span class="redtext">Score:</span> 13/15</p>
+              </div>
+            </div>
+          </div>
+          <!-- Pretest 4 -->
+          <div class="col-12 col-sm-6 col-md-6 col-lg-4"> 
+            <div class="card shadow-sm tilt quiz-card"> 
+              <div class="card-header text-center">
+                <h5 class="card-title mb-0">Pretest 4</h5>
+              </div>
+              <img src="quizzes/Pretest-4.png" class="card-img-top" alt="Pretest 4">
+              <div class="card-body">
+                <p class="card-text"><span class="redtext">Score:</span> 5/15</p>
+              </div>
+            </div>
+          </div>
+          <!-- Pretest 5 -->
+          <div class="col-12 col-sm-6 col-md-6 col-lg-4"> 
+            <div class="card shadow-sm tilt quiz-card"> 
+              <div class="card-header text-center">
+                <h5 class="card-title mb-0">Pretest 5</h5>
+              </div>
+              <img src="quizzes/Pretest-5.png" class="card-img-top" alt="Pretest 5">
+              <div class="card-body">
+                <p class="card-text"><span class="redtext">Score:</span> 18/20</p>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <!-- Post-tests -->
+    <div class="container my-5">
+        <h3 class="text-center mb-4 title" style="font-size: 2rem;">My <span class="redtext">Post-tests</span></h3>
+        <div class="row g-4 justify-content-center">
+          <!-- Post-test 1 -->
+          <div class="col-12 col-sm-6 col-md-6 col-lg-4"> 
+            <div class="card shadow-sm tilt quiz-card"> 
+              <div class="card-header text-center">
+                <h5 class="card-title mb-0">Post-test 1</h5>
+              </div>
+              <img src="quizzes/Post-test1.jpg" class="card-img-top" alt="Post-test 1">
+              <div class="card-body">
+                <p class="card-text"><span class="redtext">Score:</span> 17/20</p>
+              </div>
+            </div>
+          </div>
+          <!-- Post-test 2 -->
+          <div class="col-12 col-sm-6 col-md-6 col-lg-4"> 
+            <div class="card shadow-sm tilt quiz-card"> 
+              <div class="card-header text-center">
+                <h5 class="card-title mb-0">Post-test 2</h5>
+              </div>
+              <img src="quizzes/Post-test2.jpg" class="card-img-top" alt="Post-test 2">
+              <div class="card-body">
+                <p class="card-text"><span class="redtext">Score:</span> 20/20</p>
+              </div>
+            </div>
+          </div>
+          <!-- Post-test 3 -->
+          <div class="col-12 col-sm-6 col-md-6 col-lg-4"> 
+            <div class="card shadow-sm tilt quiz-card"> 
+              <div class="card-header text-center">
+                <h5 class="card-title mb-0">Post-test 3</h5>
+              </div>
+              <img src="quizzes/Post-test3.jpg" class="card-img-top" alt="Post-test 3">
+              <div class="card-body">
+                <p class="card-text"><span class="redtext">Score:</span> 18/20</p>
+              </div>
+            </div>
+          </div>
+          <!-- Post-test 4 -->
+          <div class="col-12 col-sm-6 col-md-6 col-lg-4"> 
+            <div class="card shadow-sm tilt quiz-card"> 
+              <div class="card-header text-center">
+                <h5 class="card-title mb-0">Post-test 4</h5>
+              </div>
+              <img src="quizzes/Post-test4.jpg" class="card-img-top" alt="Post-test 4">
+              <div class="card-body">
+                <p class="card-text"><span class="redtext">Score:</span> 19/20</p>
+              </div>
+            </div>
+          </div>
+          <!-- Post-test 5 -->
+          <div class="col-12 col-sm-6 col-md-6 col-lg-4"> 
+            <div class="card shadow-sm tilt quiz-card"> 
+              <div class="card-header text-center">
+                <h5 class="card-title mb-0">Post-test 5</h5>
+              </div>
+              <img src="quizzes/Post-test5.jpg" class="card-img-top" alt="Post-test 5">
+              <div class="card-body">
+                <p class="card-text"><span class="redtext">Score:</span> 20/20</p>
+              </div>
+            </div>
+          </div>
+          <!-- Post-test 6 -->
+          <div class="col-12 col-sm-6 col-md-6 col-lg-4"> 
+            <div class="card shadow-sm tilt quiz-card"> 
+              <div class="card-header text-center">
+                <h5 class="card-title mb-0">Post-test 6</h5>
+              </div>
+              <img src="quizzes/Post-test6.jpg" class="card-img-top" alt="Post-test 6">
+              <div class="card-body">
+                <p class="card-text"><span class="redtext">Score: </span>19/20</p>
+              </div>
+            </div>
+          </div>
+          <!-- Post-test 7 -->
+          <div class="col-12 col-sm-6 col-md-6 col-lg-4"> 
+            <div class="card shadow-sm tilt quiz-card"> 
+              <div class="card-header text-center">
+                <h5 class="card-title mb-0">Post-test 7</h5>
+              </div>
+              <img src="quizzes/Post-test7.jpg" class="card-img-top" alt="Post-test 7">
+              <div class="card-body">
+                <p class="card-text"><span class="redtext">Score: </span>20/20</p>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <!-- Long Quizzes -->
+    <div class="container my-5">
+        <h3 class="text-center mb-4 title" style="font-size: 2rem;">My <span class="redtext">Long Quizzes</span></h3>
+        <div class="row g-4 justify-content-center">
+          <div class="col-12 col-sm-6 col-md-6 col-lg-4"> 
+            <div class="card shadow-sm tilt quiz-card"> 
+              <div class="card-header text-center">
+                <h5 class="card-title mb-0">Long Quiz</h5>
+              </div>
+              <img src="quizzes/Long_quiz.jpg" class="card-img-top" alt="Long Quiz">
+              <div class="card-body">
+                <p class="card-text"><span class="redtext">Score:</span> 35/40</p>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <!-- Exams -->
+    <div class="container my-5">
+        <h3 class="text-center mb-4 title" style="font-size: 2rem;">My <span class="redtext">Exams</span></h3>
+        <div class="row g-4 justify-content-center">
+          <div class="col-12 col-sm-6 col-md-6 col-lg-4"> 
+            <div class="card shadow-sm tilt quiz-card"> 
+              <div class="card-header text-center">
+                <h5 class="card-title mb-0">Midterm Exam</h5>
+              </div>
+              <img src="quizzes/Exam.jpg" class="card-img-top" alt="Midterm Exam">
+              <div class="card-body">
+                <p class="card-text"><span class="redtext">Score:</span> 51/70</p>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+
+</section>
+<!-- quizzes section ends -->
+
+
+<!-- lab section starts -->
+<section class="education" id="lab">
+
+  <h1 class="heading"><i class="fas fa-flask"></i> My <span>Lab Activities</span></h1>
+
+    <div class="box-container">
+
+    <div class="box">
+        <div class="image">
+        <img draggable="false" src="lab/lab1.jpg" alt="Lab Activity 1">
+        </div>
+        <div class="content">
+        <h3>Lab Activity 1</h3>
+        <h4>Score: 80/100</h4>
+        </div>
+    </div>
+
+    <div class="box">
+      <div class="image">
+      <img draggable="false" src="lab/lab2.jpg" alt="Lab Activity 2">
+      </div>
+      <div class="content">
+      <h3>Lab Activity 2</h3>
+      <h4>Score: 90/100</h4>
       </div>
     </div>
 
-    <!-- View All Button -->
-    <div class="text-center mt-4">
-      <a href="projects.html" class="btn btn-lg viewall">View All</a>
-    </div>
-  </main>
+</div>
+</section>
+<!-- labsection ends -->
 
-  <main class="container-fluid my-5" id="quizzes">
-    <h2 class="text-center mb-4 title">My <span class="redtext">Pre-tests</span></h2>
-    <div class="project-container row g-4">
-      <!-- Pretest 1 -->
-      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-        <div class="card h-100 shadow-sm">
-          <div class="card-header text-center">
-            <h5 class="card-title mb-0">Pretest 1</h5>
-          </div>
-          <img src="quizzes/Pretest-1.jpg" class="card-img-top" alt="Pretest 1 Screenshot">
-          <div class="card-body">
-            <p class="card-text"><span class="redtext">Score:</span> 15/15</p>
-          </div>
-        </div>
-      </div>
-  
-      <!-- Pretest 2 -->
-      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-        <div class="card h-100 shadow-sm">
-          <div class="card-header text-center">
-            <h5 class="card-title mb-0">Pretest 2</h5>
-          </div>
-          <img src="quizzes/Pretest-2.png" class="card-img-top" alt="Pretest 2 Screenshot">
-          <div class="card-body">
-            <p class="card-text"><span class="redtext">Score:</span> 13/15</p>
-          </div>
-        </div>
-      </div>
-  
-      <!-- Pretest 3 -->
-      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-        <div class="card h-100 shadow-sm">
-          <div class="card-header text-center">
-            <h5 class="card-title mb-0">Pretest 3</h5>
-          </div>
-          <img src="quizzes/Pretest-3.png" class="card-img-top" alt="Pretest 3 Screenshot">
-          <div class="card-body">
-            <p class="card-text"><span class="redtext">Score:</span> 13/15</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  
-    <div class="text-center mt-4">
-      <a href="quizzes.html" class="btn btn-lg viewall">View All</a>
-    </div>
-  </main>
-  
-  <main class="container-fluid my-5" id="post-tests">
-    <h2 class="text-center mb-4 title">My <span class="redtext">Post-tests</span></h2>
-    <div class="project-container row g-4">
-      <!-- Post-test 1 -->
-      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-        <div class="card h-100 shadow-sm">
-          <div class="card-header text-center">
-            <h5 class="card-title mb-0">Post-test 1</h5>
-          </div>
-          <img src="quizzes/Post-test1.jpg" class="card-img-top" alt="Post-test 1 Screenshot">
-          <div class="card-body">
-            <p class="card-text"><span class="redtext">Score:</span> 17/20</p>
-          </div>
-        </div>
-      </div>
-  
-      <!-- Post-test 2 -->
-      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-        <div class="card h-100 shadow-sm">
-          <div class="card-header text-center">
-            <h5 class="card-title mb-0">Post-test 2</h5>
-          </div>
-          <img src="quizzes/Post-test2.jpg" class="card-img-top" alt="Post-test 2 Screenshot">
-          <div class="card-body">
-            <p class="card-text"><span class="redtext">Score:</span> 20/20</p>
-          </div>
-        </div>
-      </div>
-  
-      <!-- Post-test 3 -->
-      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-        <div class="card h-100 shadow-sm">
-          <div class="card-header text-center">
-            <h5 class="card-title mb-0">Post-test 3</h5>
-          </div>
-          <img src="quizzes/Post-test3.jpg" class="card-img-top" alt="Post-test 3 Screenshot">
-          <div class="card-body">
-            <p class="card-text"><span class="redtext">Score:</span> 18/20</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  
-    <div class="text-center mt-4">
-      <a href="quizzes.html" class="btn btn-lg viewall">View All</a>
-    </div>
-  </main>
-  
-  <main class="container-fluid my-5" id="long-quizzes">
-    <h2 class="text-center mb-4 title">My <span class="redtext">Long Quizzes</span></h2>
-    <div class="project-container row g-4">
-      <!-- Long Quiz -->
-      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-        <div class="card h-100 shadow-sm">
-          <div class="card-header text-center">
-            <h5 class="card-title mb-0">Long Quiz</h5>
-          </div>
-          <img src="quizzes/Long_quiz.jpg" class="card-img-top" alt="Long Quiz Screenshot">
-          <div class="card-body">
-            <p class="card-text"><span class="redtext">Score:</span> 35/40</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  
-    <div class="text-center mt-4">
-      <a href="quizzes.html" class="btn btn-lg viewall">View All</a>
-    </div>
-  </main>
-  
-  <main class="container-fluid my-5" id="exams">
-    <h2 class="text-center mb-4 title">My <span class="redtext">Exams</span></h2>
-    <div class="project-container row g-4">
-      <!-- Midterm Exam -->
-      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-        <div class="card h-100 shadow-sm">
-          <div class="card-header text-center">
-            <h5 class="card-title mb-0">Midterm Exam</h5>
-          </div>
-          <img src="quizzes/Exam.jpg" class="card-img-top" alt="Midterm Exam Screenshot">
-          <div class="card-body">
-            <p class="card-text"><span class="redtext">Score:</span> 51/70</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  
-    <div class="text-center mt-4">
-      <a href="quizzes.html" class="btn btn-lg viewall">View All</a>
-    </div>
-  </main>  
 
-   <!-- Image Popup Modal -->
-   <div id="imageModal" class="image-modal" onclick="closeModal()">
-    <span class="close-btn">&times;</span>
-    <img class="modal-content" id="modalImg">
+<!-- work project section starts -->
+<section class="work" id="projects">
+
+  <h2 class="heading"><i class="fas fa-laptop-code"></i> Projects <span>Made</span></h2>
+
+  <div class="box-container">
+
+    <div class="box tilt">
+      <img draggable="false" src="projects/Wearmania.png" alt="Wearmania" />
+      <div class="content">
+        <h3 style="background-color: #FFEB3B; color: black; display: inline-block; padding: 0.2em 0.5em; font-weight: bold; font-size: 2.8rem;">Wearmania</h3>
+        <p class="project-description pd_style">This project is a user-friendly clothing display website where visitors can browse a curated selection of apparel. Designed for easy navigation and visual appeal, it showcases a range of styles to help users explore and discover clothing items seamlessly.</p>
+        <div class="project-buttons">
+          <a href="https://Berlinxx.github.io/WearMania/" target="_blank" class="project-action-btn project-btn-style"><i class="fas fa-eye"></i> View</a>
+          <a href="https://github.com/Berlinxx/WearMania" target="_blank" class="project-action-btn project-btn-style"><i class="fas fa-code"></i> Code</a>
+        </div>
+      </div>
+    </div>
+    <!-- If you have more projects in projects.html, they would be listed here following the same pattern -->
+
   </div>
 
-  <footer class="footer-bg py-4 mt-5">
-    <div class="container text-center">
-      <p class="mb-2"><b>Contact Me</b></p>
-      <ul class="list-unstyled d-flex flex-column flex-sm-row justify-content-center gap-4 mb-3">
-        <li>
-          <a href="mailto:michaelvicedo99@gmail.com" class="footera">
-            <i class="bi bi-envelope-fill"></i> michaelvicedo99@gmail.com
-          </a>
-        </li>
-        <li>
-          <a href="https://www.linkedin.com/in/michael-vicedo-b954332bb/" target="_blank" class="footera">
-            <i class="bi bi-linkedin"></i> LinkedIn
-          </a>
-        </li>
-        <li>
-          <a href="https://github.com/Berlinxx" target="_blank" class="footera">
-            <i class="bi bi-github"></i> GitHub
-          </a>
-        </li>
-      </ul>
-      <p class="mb-0">&copy; 2025 Michael Vicedo. All rights reserved.</p>
-    </div>
-  </footer>
+</section>
+<!-- work project section ends -->
 
-  <!-- JS & jQuery -->
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="navbar.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
+<!-- contact section starts -->
+<section class="contact" id="contact">
+  
+  <h2 class="heading"><i class="fas fa-headset"></i> Get in <span>Touch</span></h2>
+
+  <div class="container">
+    <div class="content">
+      <div class="image-box">
+        <img draggable="false" src="./assets/images/contact1.png" alt="">
+      </div>
+    <form id="contact-form">
+      
+      <div class="form-group">
+        <div class="field">
+          <input type="text" name="name" placeholder="Name" required>
+          <i class='fas fa-user'></i>
+        </div>
+        <div class="field">
+          <input type="text" name="email" placeholder="Email" required>
+          <i class='fas fa-envelope'></i>
+        </div>
+        <div class="field">
+          <input type="text" name="phone" placeholder="Phone">
+          <i class='fas fa-phone-alt'></i>
+        </div>
+        <div class="message">
+        <textarea placeholder="Message" name="message" required></textarea>
+        <i class="fas fa-comment-dots"></i>
+        </div>
+        </div>
+      <div class="button-area">
+        <button type="submit">
+          Submit <i class="fa fa-paper-plane"></i></button>
+      </div>
+    </form>
+  </div>
+  </div>
+</section>
+<!-- contact section ends -->
+
+
+<!-- footer section starts -->
+<section class="footer">
+
+  <div class="box-container">
+
+      <div class="box">
+          <h3>Michael Vicedo's Portfolio</h3>
+          <p>Thank you for visiting my personal portfolio website. Connect with me over socials. <br/> <br/> Keep Rising 🚀. <!-- Connect with me over live chat! --> </p> <!-- Removed live chat part -->
+      </div>
+
+      <div class="box">
+          <h3>quick links</h3>
+          <a href="#home"><i class="fas fa-chevron-circle-right"></i> home</a>
+          <a href="#about"><i class="fas fa-chevron-circle-right"></i> about</a>
+          <!-- <a href="#skills"><i class="fas fa-chevron-circle-right"></i> skills</a>  -->
+          <!-- <a href="#education"><i class="fas fa-chevron-circle-right"></i> education</a>  -->
+          <a href="#projects"><i class="fas fa-chevron-circle-right"></i> projects</a>
+          <a href="#quizzes"><i class="fas fa-chevron-circle-right"></i> quizzes</a>
+          <a href="#lab"><i class="fas fa-chevron-circle-right"></i> lab activities</a>
+          <!-- <a href="#experience"><i class="fas fa-chevron-circle-right"></i> experience</a>  -->
+      </div>
+
+      <div class="box">
+          <h3>contact info</h3>
+          <p> <i class="fas fa-phone"></i>+639677159268</p>
+          <p> <i class="fas fa-envelope"></i>michaelvicedo99@gmail.com</p>
+          <!-- <p> <i class="fas fa-map-marked-alt"></i>Pune, India-412206</p> --> <!-- Commented out place -->
+          <div class="share">
+
+              <a href="https://www.linkedin.com/in/michael-vicedo-b954332bb/" class="fab fa-linkedin" aria-label="LinkedIn" target="_blank"></a>
+              <a href="https://github.com/Berlinxx" class="fab fa-github" aria-label="GitHub" target="_blank"></a>
+              <a href="mailto:michaelvicedo99@gmail.com" class="fas fa-envelope" aria-label="Mail" target="_blank"></a>
+              <a href="https://x.com/Maykel____?t=eO-zoNRBbCaQT-yYF6PYog&s=09" class="fab fa-twitter" aria-label="Twitter" target="_blank"></a>
+              <a href="https://t.me/michael1209" class="fab fa-telegram-plane" aria-label="Telegram" target="_blank"></a>
+              <a href="https://www.instagram.com/maykelvxx?igsh=dHljaDdjdXcxaDc3" class="fab fa-instagram" aria-label="Instagram" target="_blank"></a> <!-- Added Instagram to footer share -->
+          </div>
+      </div>
+  </div>
+
+  <h1 class="credit">Designed with <i class="fa fa-heart pulse"></i> by <a href="https://www.linkedin.com/in/michael-vicedo-b954332bb/"> Michael Vicedo</a></h1>
+
+</section>
+<!-- footer section ends -->
+
+
+<!-- scroll top btn -->
+<a href="#home" aria-label="ScrollTop" class="fas fa-angle-up" id="scroll-top"></a>
+<!-- scroll back to top -->
+
+
+<!-- ==== ALL MAJOR JAVASCRIPT CDNS STARTS ==== -->
+<!-- jquery cdn -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<!-- typed.js cdn -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.5/typed.min.js" integrity="sha512-1KbKusm/hAtkX5FScVR5G36wodIMnVd/aP04af06iyQTkD17szAMGNmxfNH+tEuFp3Og/P5G32L1qEC47CZbUQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<!-- particle.js links -->
+<script src="./assets/js/particles.min.js"></script>
+<script src="./assets/js/app.js"></script>
+
+<!-- vanilla tilt.js links -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js" integrity="sha512-SttpKhJqONuBVxbRcuH0wezjuX+BoFoli0yPsnrAADcHsQMW8rkR84ItFHGIkPvhnlRnE2FaifDOUw+EltbuHg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<!-- scroll reveal anim -->
+<script src="https://unpkg.com/scrollreveal"></script>
+
+<script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"
+    ></script>
+
+<!-- ==== ALL MAJOR JAVASCRIPT CDNS ENDS ==== -->
+
+<!-- SilverBox JS -->
+<script src="./assets/js/silverBox.min.js"></script>
+<script src="./assets/js/script.js"></script>
+<script>
+// Initialize EmailJS (replace 'YOUR_USER_ID' with your actual user/public key)
+emailjs.init('kQz26wmWvdXBThoXw');
+
+document.addEventListener('DOMContentLoaded', function() {
+  var form = document.getElementById('contact-form');
+  if(form) {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      // Show a SilverBox modal while sending (persistent until replaced)
+      silverBox({
+        timer: 2000,
+        alertIcon: "info",
+         title: {
+              text: "Sending your message...",
+       },
+        centerContent: true,
+      });
+
+        emailjs.sendForm('service_uirbodj', 'template_5ag4w0l', this)
+          .then(function() {
+            silverBox({
+              alertIcon: "success",
+              text: "Form submitted successfully!",
+              centerContent: true,
+              cancelButton: { text: "OK" }
+            });
+            form.reset();
+          }, function(error) {
+            silverBox({
+              alertIcon: "error",
+              text: "Failed to send message: " + error.text,
+              centerContent: true,
+              cancelButton: { text: "OK" }
+            });
+          });
+      });
+    }
+  });
+</script>
+
 </body>
 </html>
